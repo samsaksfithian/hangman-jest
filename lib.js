@@ -36,7 +36,7 @@ function createBlankWordArray(length) {
  */
 function fillInGuessedLetters(guessedLetter, guessedWord, targetWord) {
   return guessedWord.map((char, i) =>
-    guessedLetter === targetWord[i] ? guessedLetter : char
+    guessedLetter === targetWord[i] ? guessedLetter : char,
   );
 }
 
@@ -46,7 +46,7 @@ function fillInGuessedLetters(guessedLetter, guessedWord, targetWord) {
  * @returns {string}
  */
 function stringify(wordArray = []) {
-  return wordArray.join('');
+  return wordArray.join(' ');
 }
 
 /**

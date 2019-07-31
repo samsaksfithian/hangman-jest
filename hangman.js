@@ -19,16 +19,16 @@ function playHangman(
   targetWord = '',
   guessedWord = createBlankWordArray(targetWord.length),
   strikes = 0,
-  maxStrikes = 5
+  maxStrikes = 5,
 ) {
   // base case (win)
   if (isWordSolved(guessedWord)) {
-    print(`You win! The word was ${targetWord}`);
+    print(`You win! The word was '${targetWord}'`);
     return;
   }
   // base case (loss)
   if (strikes >= maxStrikes) {
-    print(`You lose! The word was ${targetWord}`);
+    print(`You lose! The word was '${targetWord}'`);
     return;
   }
 
@@ -42,7 +42,7 @@ function playHangman(
       targetWord,
       fillInGuessedLetters(guessedLetter, guessedWord, targetWord),
       strikes,
-      maxStrikes
+      maxStrikes,
     );
   } else {
     print(`Wrong! You have ${maxStrikes - (strikes + 1)} strikes left`);
