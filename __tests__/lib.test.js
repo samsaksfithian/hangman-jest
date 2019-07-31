@@ -102,11 +102,8 @@ describe('print', () => {
 });
 
 describe('randomlySelectWord', () => {
-  // Math.random = jest.fn(() => 0.5);
-  // Math.random = jest.fn().mockReturnValue(0.5);
-  Math.random = jest.fn();
-
   test('should be able to return any word in the array', () => {
+    Math.random = jest.fn();
     Math.random
       .mockReturnValueOnce(0)
       .mockReturnValueOnce(0.5)
