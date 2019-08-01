@@ -71,6 +71,19 @@ function askForALetter() {
 }
 
 /**
+ * Takes in the input (presumably from readline-sync), and checks
+ * if it is a valid single-character input. Throws an error otherwise.
+ * @param {string} input the single character input
+ * @throws Error if input is something other than a string
+ */
+function validateInput(input) {
+  if (typeof input !== 'string' || !RegExp('[a-zA-Z]').test(input[0])) {
+    throw Error('Invalid input');
+  }
+  return input[0];
+}
+
+/**
  * Ouputs `output` to the console
  * @param {string} output
  */
@@ -86,5 +99,6 @@ module.exports = {
   print,
   stringify,
   askForALetter,
+  validateInput,
   wordIncludesLetter,
 };

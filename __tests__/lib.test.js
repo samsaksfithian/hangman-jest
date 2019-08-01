@@ -5,6 +5,7 @@ const {
   randomlySelectWord,
   createBlankWordArray,
   askForALetter,
+  validateInput,
   print,
 } = require('../lib');
 
@@ -132,4 +133,43 @@ describe('askForALetter', () => {
     expect(askForALetter()).toBe('z');
     expect(askForALetter()).toBe('q');
   });
+});
+
+describe('validateInput', () => {
+  test('should only return a single letter when a single letter is passed', () => {
+    expect(validateInput('a')).toBe('a');
+  });
+
+  test('should return the first character if it receives a string and the first character is a letter', () => {
+    expect(validateInput('string')).toBe('s');
+  });
+
+  test('should throw an error with a message of "Invalid input" if it receives a number', () => {
+    expect(() => {
+      validateInput(1);
+    }).toThrowError('Invalid input');
+  });
+
+  test('should throw an error with a message of "Invalid input" if it receives a non-letter character', () => {
+    expect(() => {
+      validateInput('.a');
+    }).toThrowError('Invalid input');
+    expect(() => {
+      validateInput('#');
+    }).toThrowError('Invalid input');
+    expect(() => {
+      validateInput('2');
+    }).toThrowError('Invalid input');
+  });
+
+  test('should throw an error with a message of "Invalid input" if it receives undefined input', () => {
+    expect(validateInput).toThrowError('Invalid input');
+  });
+
+  test.todo(
+    'should throw an error with a message of "Invalid input" if it receives an object',
+  );
+  test.todo(
+    'should throw an error with a message of "Invalid input" if it receives an array',
+  );
 });
