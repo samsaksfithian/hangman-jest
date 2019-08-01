@@ -15,7 +15,7 @@ const {
  * @param {number} strikes total strikes the user has received
  * @param {number} maxStrikes total strikes the user is allowed
  */
-function playHangman(
+exports.playHangman(
   targetWord = '',
   guessedWord = createBlankWordArray(targetWord.length),
   strikes = 0,
@@ -38,7 +38,7 @@ function playHangman(
 
   if (wordIncludesLetter(targetWord, guessedLetter)) {
     print('Good guess!');
-    playHangman(
+    exports.playHangman(
       targetWord,
       fillInGuessedLetters(guessedLetter, guessedWord, targetWord),
       strikes,
@@ -46,8 +46,6 @@ function playHangman(
     );
   } else {
     print(`Wrong! You have ${maxStrikes - (strikes + 1)} strikes left`);
-    playHangman(targetWord, guessedWord, strikes + 1, maxStrikes);
+    exports.playHangman(targetWord, guessedWord, strikes + 1, maxStrikes);
   }
 }
-
-module.exports = { playHangman };
