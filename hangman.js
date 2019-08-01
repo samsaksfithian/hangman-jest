@@ -15,12 +15,12 @@ const {
  * @param {number} strikes total strikes the user has received
  * @param {number} maxStrikes total strikes the user is allowed
  */
-exports.playHangman(
+exports.playHangman = (
   targetWord = '',
   guessedWord = createBlankWordArray(targetWord.length),
   strikes = 0,
   maxStrikes = 5,
-) {
+) => {
   // base case (win)
   if (isWordSolved(guessedWord)) {
     print(`You win! The word was '${targetWord}'`);
@@ -48,4 +48,4 @@ exports.playHangman(
     print(`Wrong! You have ${maxStrikes - (strikes + 1)} strikes left`);
     exports.playHangman(targetWord, guessedWord, strikes + 1, maxStrikes);
   }
-}
+};
